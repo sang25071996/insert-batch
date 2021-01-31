@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/batch-demo
+    username: postgres
+    password: 123456
+    driverClassName: org.postgresql.Driver
+
+  jpa:
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+        id.new_generator_mappings: true
+        jdbc.batch_size: 25
+        order_inserts: true
+        order_updates: true
+    hibernate:
+#      ddl-auto: create
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+
+logging:
+  level:
+    jdbc:
+      sqlonly: info
+      resultsettable: info
+      sqltiming: fatal
+      audit: fatal
+      resultset: fatal
+      connection: fatal
